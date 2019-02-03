@@ -1,0 +1,16 @@
+{
+  "pages":[
+    "pages/liveStreaming/liveStreaming",
+    "pages/index/index",
+    "pages/label/label",
+    "pages/login/login",
+    "pages/commodity/commodity",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  }
+}

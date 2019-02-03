@@ -1,0 +1,32 @@
+<!--pages/label/label.wxml-->
+<view class='container'>
+  <text class='done-text'>完成</text>
+  <view class='input-label'>
+    <input class='label-input' placeholder="添加标签" type="text" bindinput="getLabel"></input>
+    <button class='add-btn' bindtap='addLabel'>确定</button>
+  </view>
+  <view class='line'></view>
+  <text class='label-title'>推荐标签</text>
+
+  <view class='lael-list-view'>
+    <view class='label-list'>
+
+      <view class='label-list-item'>爆款</view>
+    </view>
+
+  </view>
+  <view class='label-line'></view>
+
+  <view class='label-title-view'>
+    <text class='label-title'>历史添加</text>
+    <image class='label-delete' src='../images/delete_icon.png'></image>
+  </view>
+  <view class='lael-list-view'>
+    <view class='label-list'>
+
+      <view class='label-list-item'>爆款</view>
+    </view>
+
+  </view>
+  <view class='label-line'></view>
+</view>

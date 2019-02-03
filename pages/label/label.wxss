@@ -1,0 +1,103 @@
+/* pages/label/label.wxss */
+
+.container {
+  width: 100%;
+  height: 100%;
+  font-size: 28rpx;
+  align-items: center;
+}
+
+.done-text {
+  text-align: right;
+  font-size: 32rpx;
+  color: #313131;
+  margin-right: 44rpx;
+  margin-top: 17rpx;
+  width: 100%;
+}
+
+.input-label {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  /* text-align: center; */
+  margin-top: 35rpx;
+  justify-content: space-between;
+  line-height: 56rpx;
+}
+
+.label-input {
+  width: 100%;
+  font-size: 28rxp;
+  margin-left: 24rpx;
+}
+
+.add-btn {
+  width: 120rpx;
+  height: 56rpx;
+  border-radius: 8rpx;
+  background-color: #e83d2c;
+  line-height: 56rpx;
+  font-size: 24rpx;
+  color: #fbfbfb;
+  margin-right: 24rpx;
+}
+
+.line {
+  width: 702rpx;
+  height: 1rpx;
+  background-color: #c1c1c1;
+  margin-top: 14rpx;
+}
+
+.label-title {
+  width: 100%;
+  /* text-align: left; */
+  margin-left: 24rpx;
+  color: #313131;
+  margin-top: 24rpx;
+}
+
+.lael-list-view {
+  width: 100%;
+}
+
+.label-list {
+  margin: 16rpx 24rpx 24rpx 24rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+.label-list-item {
+  width: 98rpx;
+  height: 64rpx;
+  background: rgba(145, 145, 145, 1);
+  border-radius: 28rpx;
+  text-align: center;
+  line-height: 64rpx;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+.label-line {
+  width: 702rpx;
+  height: 2rpx;
+  background-color: #c1c1c1;
+  /* margin-top: 24rpx; */
+}
+
+.label-title-view {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.label-delete {
+  width: 24rpx;
+  height: 32rpx;
+  margin-right: 24rpx;
+}

@@ -1,0 +1,52 @@
+<!--pages/liveStreaming/liveStreaming.wxml-->
+<view class="page-body">
+
+  <live-player id="player" src="rtmp://live-down.cmdd.tech/ugo365-live/local?auth_key=1548478413-0-0-bb0f5654a291b9af619212ac763fec61" mode="RTC" autoplay bindstatechange="statechange" binderror="error" style="width: 100%;height:{{windowHeight}}rpx" />
+
+  <view class='top'>
+    <image class='head-image' src=''></image>
+    <view class='top-content'>
+      <view class='content-title'>
+        <text class=''>张三数码</text>
+        <view class='title-view'></view>
+        <text class=''>河北省</text>
+      </view>
+      <text class='content-number'>2000人观看</text>
+    </view>
+  </view>
+
+
+  <view class='bottome'>
+    <!-- <image class=''></image> -->
+    <view class='zb-cart' bindtap='shouModel'></view>
+    <input class='bottom-input' type='text' placeholder="跟主播聊聊" bindinput="passwordInput"></input>
+
+    <image class='zb-share' src='../images/zb_share.png'></image>
+    <image class='zb-collect' src='../images/zb_collecticon.png'></image>
+  </view>
+  <view class='zb-content'>
+    <view class='zb-content-title'>
+
+      你爹来了</view>
+    <text class='zb-content-text'>asdfssfsdsfdfsdfs</text>
+  </view>
+
+
+  <!--屏幕背景变暗的背景  -->
+  <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+
+  <!--弹出框  -->
+  <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+
+    <view class='shop-item'>
+      <image class='shop-item-icon' src=''></image>
+      <view class='shop-item-content'>
+        <text class='item-content-name'></text>
+        <text class='item-content-price'></text>
+      </view>
+      <image class='item-content-cart' src='../images/zb-carticon.png'></image>
+    </view>
+    <view class='line'></view>
+  </view>
+
+</view>

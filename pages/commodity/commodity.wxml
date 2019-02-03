@@ -1,0 +1,28 @@
+<!--pages/commodity/commodity.wxml-->
+<view class='container'>
+  <view class='title'>
+    <view class='title-view'>
+      <text class='search-text'>请输入商品名称</text>
+      <image class='search-icon' src='../images/search-icon.png'></image>
+    </view>
+  </view>
+
+  <view class='commodity-list'>
+    <block>
+      <view class='commodity-item'>
+        <image class='commodity-icon'></image>
+        <view class='commodity-content'>
+          <text class='commodity-name'>fasdfsdafasdf</text>
+          <text class='commodity-price'>￥19400</text>
+        </view>
+        <button class='commodity-btn'>选择</button>
+      </view>
+      <view class='line'></view>
+    </block>
+  </view>
+
+  <view class='footer'>
+    提交
+  </view>
+
+</view>

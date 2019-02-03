@@ -1,0 +1,24 @@
+<!--index.wxml-->
+<view class="container">
+  <view class='location'>
+    <image class='location-icon' src='../images/location_icon.png'></image>
+    <text class='location-text'>北京市</text>
+  </view>
+  <block wx:if="{{src}}">
+    <image class='cover-image' src='{{src}}'></image>
+  </block>
+  <block wx:else>
+    <view class='add-cover' bindtap='chooseImage'>
+      添加封面
+    </view>
+  </block>
+  <!-- <block wx:if="{{title}}"> -->
+
+    <input class='add-title' placeholder="请输入标题" type="text" bindinput="getTitle"/>
+  <!-- </block> -->
+  
+  <view class='add-label'>标签+</view>
+  <view class='add-commodity'>添加商品</view>
+  <image class='live-icon' src='../images/live_icon.png'></image>
+  <text class='live-text'>直播</text>
+</view>
