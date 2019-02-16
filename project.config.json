@@ -4,16 +4,18 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false
+		"nodeModules": true,
+		"autoAudits": false,
+		"uglifyFileName": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.5.2",
-	"appid": "wx38387391666ecec0",
+	"appid": "wx4c95706d5bc08f2e",
 	"projectname": "Live",
 	"debugOptions": {
 		"hidedInDevtools": []

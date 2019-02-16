@@ -1,0 +1,25 @@
+<!--pages/search/search.wxml-->
+<view class='container'>
+  <view class='title'>
+   <van-search value="{{ value }}" placeholder="请输入关键词搜索" bind:change="onSearch" />
+  </view>
+
+  <view class='commodity-list'>
+    <block>
+      <view class='commodity-item'>
+        <image class='commodity-icon'></image>
+        <view class='commodity-content'>
+          <text class='commodity-name'>fasdfsdafasdf</text>
+          <text class='commodity-price'>￥19400</text>
+        </view>
+        <button class='commodity-btn'>选择</button>
+      </view>
+      <view class='line'></view>
+    </block>
+  </view>
+
+  <view class='footer'>
+    提交
+  </view>
+
+</view>
