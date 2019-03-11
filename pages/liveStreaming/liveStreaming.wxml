@@ -17,7 +17,7 @@
 
 
   <view class='bottome'>
-   <view class='bottome-view'></view>
+    <view class='bottome-view'></view>
   </view>
   <view class='zb-content'>
     <view class='zb-content-title'>
@@ -25,4 +25,5 @@
       你爹来了</view>
     <text class='zb-content-text'>asdfssfsdsfdfsdfs</text>
   </view>
+
 </view>

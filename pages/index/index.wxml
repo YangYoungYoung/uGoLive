@@ -16,8 +16,9 @@
 
     <input class='add-title' placeholder="请输入标题" type="text" bindinput="getTitle"/>
   <!-- </block> -->
-  
-  <view class='add-label'>标签+</view>
+  <block wx:if="{{}}">
+  <view class='add-label' bindtap='toLabel'>标签+</view>
+  </block>
   <view class='add-commodity'>添加商品</view>
   <image class='live-icon' src='../images/live_icon.png'></image>
   <text class='live-text'>直播</text>

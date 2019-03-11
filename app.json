@@ -1,10 +1,10 @@
 {
   "pages":[
+    "pages/index/index",
+    "pages/label/label",
     "pages/liveStreaming/liveStreaming",
     "pages/search/search",
-    "pages/index/index",
     "pages/commodity/commodity",
-    "pages/label/label",
     "pages/login/login"
   ],
   "window":{

@@ -4,13 +4,15 @@ const app = getApp()
 
 Page({
   data: {
-    src:'',
-    title:''
+    src: '',
+    title: '',
+    tags:''
   },
 
 
-  onLoad: function() {
-
+  onLoad: function(options) {
+    let tags = options.tags;
+    console.log(tags);
   },
 
   chooseImage: function() {
@@ -22,18 +24,24 @@ Page({
         // const images = this.data.images.concat(res.tempFilePaths)
         let src = res.tempFilePaths;
         this.setData({
-          src:src
+          src: src
         })
-        
+
         // 限制最多只能留下3张照片
         console.log(res.tempFilePaths);
-        
+
       }
     })
   },
-  getTitle:function(e){
+  getTitle: function(e) {
     let title = e.detail.value;
     console.log(title);
+  },
+  //进入标签
+  toLabel:function(){
+    wx.navigateTo({
+      url: '../label/label',
+    })
   }
 
 })

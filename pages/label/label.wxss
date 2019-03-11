@@ -71,7 +71,7 @@
 }
 
 .label-list-item {
-  width: 98rpx;
+  min-width: 98rpx;
   height: 64rpx;
   background: rgba(145, 145, 145, 1);
   border-radius: 28rpx;
@@ -79,6 +79,10 @@
   line-height: 64rpx;
   color: #fff;
   box-sizing: border-box;
+  margin-right: 14rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  margin-top: 20rpx;
 }
 
 .label-line {
