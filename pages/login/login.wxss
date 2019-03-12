@@ -92,3 +92,12 @@
   color: #FBFBFB;
   font-size: 36rpx;
 }
+
+.btn{
+  
+ width: 80%;
+  margin-top: 88rpx;
+  background-color: #fc8901;
+  color: #FBFBFB;
+  font-size: 36rpx;
+}

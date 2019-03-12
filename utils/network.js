@@ -3,7 +3,7 @@ const app = getApp()
 
 // var API_URL = 'https://api.cmdd.tech/';
 // var API_URL = 'https://mall.cmdd.tech/mall/DG/';
-var API_URL = 'http://132.232.142.23:8088/api/zhiBo/';
+var API_URL = 'http://132.232.142.23:8088/api/';
 var defaulContentType = 'application/x-www-form-urlencoded; charset=UTF-8';
 
 function POST(url, params, method, contenTTypeCust) {

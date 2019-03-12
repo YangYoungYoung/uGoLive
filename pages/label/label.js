@@ -19,7 +19,7 @@ Page({
   onLoad: function(options) {
     let that = this;
 
-    let url = "room/100/tags"
+    let url = "zhiBo/room/100/tags"
     var params = {
 
     }
@@ -93,6 +93,11 @@ Page({
   },
   //完成,提交标签
   toDone: function() {
+    var pages = getCurrentPages();
+    var currPage = pages[pages.length - 1]; //当前页面
+    var prevPage = pages[pages.length - 2]; //上一个页面
+    var DZ = "tags"
+
     let that = this;
     let addList = that.data.addList;
     let tags = '';
@@ -101,7 +106,7 @@ Page({
     }
     console.log(tags);
 
-    let url = "room/100/tags"
+    let url = "zhiBo/room/100/tags"
     var params = {
       tags: tags
     }
@@ -113,8 +118,15 @@ Page({
         wx.hideLoading();
         console.log(res.data);
         common.showTip('添加成功');
-        wx.redirectTo({
-          url: '../index/index?tags='+tags,
+        // wx.redirectTo({
+        //   url: '../index/index?tags='+tags,
+        // })
+        prevPage.setData({
+          [DZ]: tags
+
+        })
+        wx.navigateBack({
+          delta: 1
         })
 
       }).catch((errMsg) => {
@@ -132,7 +144,7 @@ Page({
   //删除历史
   deleteHistory: function() {
     let that = this;
-    let url = "room/100/tags"
+    let url = "zhiBo/room/100/tags"
     var params = {
       // tags: tags
     }
