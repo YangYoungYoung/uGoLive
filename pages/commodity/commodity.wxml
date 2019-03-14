@@ -8,7 +8,7 @@
   </view>
 
   <view class='commodity-list'>
-    <block>
+    <block wx:for="{{shopList}}" wx:key='index'>
       <view class='commodity-item'>
         <image class='commodity-icon'></image>
         <view class='commodity-content'>

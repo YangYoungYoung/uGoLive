@@ -1,26 +1,23 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+var network = require("../../utils/network.js")
+var common = require("../../utils/common.js")
 Page({
   data: {
     src: '',
     title: '',
     tags: '',
-    district:'',
-    goodId:''
+    district: '',
+    goodId: '',
+    userSig: ''
   },
 
 
   onLoad: function(options) {
-    // if (options.tags != undefined) {
-    //   let tags = options.tags;
-    //   console.log(tags);
-    //   this.setData({
-    //     tags: tags
-    //   })
-    // }
-
+    let that = this;
+    that.getUserLocation();
+    that.getUserSig();
   },
 
   chooseImage: function() {
@@ -59,8 +56,8 @@ Page({
   //直播
   toLive: function() {
     let that = this;
-    let src = that.data.src;//封面
-    let district = that.data.district;//地理位置
+    let src = that.data.src; //封面
+    let district = that.data.district; //地理位置
     let goodId = that.data.goodId;
     let tags = that.data.tags;
     let title = that.data.title;
@@ -68,7 +65,7 @@ Page({
 
     console.log(tags);
 
-    let url = "room"
+    let url = "zhiBo/room"
     var params = {
       tags: tags
     }
@@ -78,18 +75,10 @@ Page({
       }),
       network.POST(url, params, method).then((res) => {
         wx.hideLoading();
-        console.log(res.data);
-        common.showTip('添加成功');
-        // wx.redirectTo({
-        //   url: '../index/index?tags='+tags,
-        // })
-        prevPage.setData({
-          [DZ]: tags
-
-        })
-        wx.navigateBack({
-          delta: 1
-        })
+        let userSig = that.data.userSig
+       wx.navigateTo({
+         url: '../liveStreaming/liveStreaming?userSig=' + userSig,
+       })
 
       }).catch((errMsg) => {
         wx.hideLoading();
@@ -118,12 +107,13 @@ Page({
           method: 'GET',
           success: (res) => {
             console.log(res.data);
-            console.log(res.data.result.address_component.district)
+            console.log(res.data.result.address_component.city)
 
             //取位置名
             that.setData({
-              district: res.data.result.address_component.district
+              district: res.data.result.address_component.city
             })
+            wx.setStorageSync('location', res.data.result.address_component.city)
           }
         });
 
@@ -135,5 +125,36 @@ Page({
       }
     })
   },
+
+  //获取userSig
+  getUserSig: function() {
+    let that = this;
+    let userId = wx.getStorageSync(userId);
+    let url = "common/im/userSig?userId=1"
+    var params = {}
+    let method = "GET";
+    wx.showLoading({
+        title: '加载中...',
+      }),
+      network.POST(url, params, method).then((res) => {
+        wx.hideLoading();
+        if (res.data.code == 200) {
+          let userSig = res.data.urlSig;
+          console.log(userSig)
+          that.setData({
+            userSig: userSig
+          })
+        }
+
+      }).catch((errMsg) => {
+        wx.hideLoading();
+        console.log(errMsg); //错误提示信息
+        wx.showToast({
+          title: '网络错误',
+          icon: 'loading',
+          duration: 1500,
+        })
+      });
+  }
 
 })

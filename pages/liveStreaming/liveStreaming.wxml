@@ -1,29 +1,37 @@
 <!--pages/liveStreaming/liveStreaming.wxml-->
 <view class="page-body">
 
-  <live-player id="player" src="rtmp://live-down.cmdd.tech/ugo365-live/local?auth_key=1548478413-0-0-bb0f5654a291b9af619212ac763fec61" mode="RTC" autoplay bindstatechange="statechange" binderror="error" style="width: 100%;height:{{windowHeight}}rpx" />
+  <live-player id="player" src="{{pushUrl}}" mode="RTC" autoplay bindstatechange="statechange" binderror="error" style="width: 100%;height:{{windowHeight}}rpx" />
 
   <view class='top'>
-    <image class='head-image' src=''></image>
-    <view class='top-content'>
-      <view class='content-title'>
-        <text class=''>张三数码</text>
-        <view class='title-view'></view>
-        <text class=''>河北省</text>
+    <view class='top-left'>
+      <image class='head-image' src=''></image>
+      <view class='top-content'>
+        <view class='content-title'>
+          <text class=''>张三数码</text>
+          <view class='title-view'></view>
+          <text class=''>{{location}}</text>
+        </view>
+        <text class='content-number'>2000人观看</text>
       </view>
-      <text class='content-number'>2000人观看</text>
     </view>
+    <image class='close-icon' src='../images/close_icon.png' bindtap='onClose'></image>
+
   </view>
 
 
   <view class='bottome'>
-    <view class='bottome-view'></view>
+    <input class='bottome-view' value="{{msgContent}}" bindconfirm="bindConfirm"></input>
   </view>
   <view class='zb-content'>
-    <view class='zb-content-title'>
+    <!-- <view class='zb-content-title'>
 
-      你爹来了</view>
-    <text class='zb-content-text'>asdfssfsdsfdfsdfs</text>
+      你爹来了</view> -->
+    <view class="msgs-wrapper">
+      <view class="msgs" wx:for="{{msgs}}" wx:key="index">
+        <text class="msg-item"><text class="nickname">{{item.fromAccountNick}}</text> : {{item.content}}</text>
+      </view>
+    </view>
   </view>
 
 </view>

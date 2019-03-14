@@ -2,7 +2,7 @@
 <view class="container">
   <view class='location'>
     <image class='location-icon' src='../images/location_icon.png'></image>
-    <text class='location-text'>北京市</text>
+    <text class='location-text'>{{district}}</text>
   </view>
   <block wx:if="{{src}}">
     <image class='cover-image' src='{{src}}'></image>

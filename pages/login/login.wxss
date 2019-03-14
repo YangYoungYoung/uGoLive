@@ -56,13 +56,15 @@
 }
 
 .inputText {
+  margin-left: 16rpx;
   flex: block;
   float: right;
-  /* text-align: right; */
+  text-align: left;
   margin-right: 22px;
   margin-top: 11px;
   color: #545454;
   font-size: 14px;
+  width: 600rpx;
 }
 
 .line {

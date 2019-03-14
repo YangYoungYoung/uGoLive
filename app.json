@@ -1,17 +1,21 @@
 {
-  "pages":[
-    "pages/login/login",
-    "pages/index/index",
-    "pages/label/label",
+  "pages": [
     "pages/liveStreaming/liveStreaming",
+    "pages/index/index",
+    "pages/login/login",
+    "pages/commodity/commodity",
     "pages/search/search",
-    "pages/commodity/commodity"
-    
+    "pages/label/label"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
   }
 }

@@ -24,7 +24,8 @@
 
   <!--按钮 -->
   <view class="loginBtnView">
-    <button class="loginBtn" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">登录</button>
+    <!-- <button class="loginBtn" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">登录</button> -->
+    <button class="loginBtn" bindtap="login">登录</button>
 
     <!-- <button wx:if="{{authorization}}" class='btn'  open-type='getUserInfo' bindgetuserinfo="bindGetUserInfo">授权</button>
     <button wx:if="{{!authorization}}" class='btn' bindtap='login'>登录</button> -->
