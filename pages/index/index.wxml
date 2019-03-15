@@ -5,7 +5,7 @@
     <text class='location-text'>{{district}}</text>
   </view>
   <block wx:if="{{src}}">
-    <image class='cover-image' src='{{src}}'></image>
+    <image class='cover-image' src='{{src}}' bindtap='chooseImage'></image>
   </block>
   <block wx:else>
     <view class='add-cover' bindtap='chooseImage'>
@@ -24,7 +24,7 @@
     <view class='add-label' bindtap='toLabel'>标签+</view>
   </block>
 
-  <view class='add-commodity'>添加商品</view>
+  <view class='add-commodity' bindtap='toCommodity'>添加商品</view>
   <image class='live-icon' src='../images/live_icon.png' bindtap='toLive'></image>
   <text class='live-text'>直播</text>
 </view>

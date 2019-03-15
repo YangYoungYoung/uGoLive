@@ -12,11 +12,13 @@ Page({
     windowHeight: 1334,
     showModalStatus: false,
     pushUrl: '',
+    playUrl:'',
     avChatRoomId: '20190201',
     identifier: '', // 当前用户身份标识，必选
-    userSig: 'eJw9j0uPgjAURv8LW4y20DqjiQvUYjA64SE*2DQNlKY6YsViNMb-LuIjuatzFt*5N2Mxi9pMKZlRpqldZkbfAEarwfyiZMkpyzUvawwxxhYAHyszXmiZy8ZV4gDf-CRFDeYkGHnkgv*i49T6h56bbMnaER0NZyxQu26VqE1c2MuJSdw8TDxHDqPYDok79X5stNqEwMTnFA3nfg8HkSl6Sbx1fLH3F50xCgaDz1i2o039sw8BAH8Rgt231HLPX91Wfda3nKXpoSo01VfFm3fvD6ZWTR0_', // 当前用户签名，必选
+    userSig: '', // 当前用户签名，必选
     nickName: '', // 当前用户昵称，选填
-    msgContent:''
+    msgContent:'',
+    avatar:''
   },
 
   /**
@@ -34,14 +36,42 @@ Page({
         })
       }
     })
+    //获取推流地址
+    let pushUrl = wx.getStorageSync('pushUrl');;
+    console.log("pushUrl is:=====", pushUrl);
+    //获取播流
+    let playUrl = wx.getStorageSync('playUrl');
+    console.log("playUrl is:=====", playUrl);
+    
+    //获取identifier
+    let identifier = 'ugo' + wx.getStorageSync('userId');
+    //获取userSig
+    let userSig = options.userSig;
+    //获取用户名
+    let nickName = wx.getStorageSync('nickName');
+    let avatar = wx.getStorageSync('avatar');
+    console.log('avatar..........', avatar);
+    that.setData({
+      pushUrl: pushUrl,
+      identifier: identifier,
+      userSig: userSig,
+      playUrl: playUrl,
+      nickName: nickName,
+      avatar: avatar
+    })
+    
+    console.log("identifier is:", identifier);
+    
+
+
     //获取用户信息
-    that.getUserInfo();
+    // that.getUserInfo();
     let location = wx.getStorageSync('location');
     that.setData({
       location: location
     })
     //获取推流
-    that.getPushUrl();
+    // that.getPushUrl();
     // let userId = wx.getStorageSync('userId');
     // let userName = wx.getStorageSync('userName');
     // that.setData({
@@ -213,37 +243,37 @@ Page({
       });
   },
   //获取推流地址
-  getPushUrl: function() {
-    let that = this;
-    let userId = wx.getStorageSync('userId');
+  // getPushUrl: function() {
+  //   let that = this;
+  //   // let userId = wx.getStorageSync('userId');
 
-    let url = "common/MLVC/pushUrl?id=1"
-    var params = {
+  //   let url = "common/MLVC/pushUrl?id=1"
+  //   var params = {
 
-    }
-    let method = "GET";
-    wx.showLoading({
-        title: '加载中...',
-      }),
-      network.POST(url, params, method).then((res) => {
-        wx.hideLoading();
-        // if (res.data.code == 200) {
-        console.log(res.data);
-        that.setData({
-          pushUrl: res.data
-        })
-        // }
+  //   }
+  //   let method = "GET";
+  //   wx.showLoading({
+  //       title: '加载中...',
+  //     }),
+  //     network.POST(url, params, method).then((res) => {
+  //       wx.hideLoading();
+  //       // if (res.data.code == 200) {
+  //     console.log('PushUrl：',res.data);
+  //       that.setData({
+  //         pushUrl: res.data
+  //       })
+  //       // }
 
-      }).catch((errMsg) => {
-        wx.hideLoading();
-        console.log(errMsg); //错误提示信息
-        wx.showToast({
-          title: '网络错误',
-          icon: 'loading',
-          duration: 1500,
-        })
-      });
-  },
+  //     }).catch((errMsg) => {
+  //       wx.hideLoading();
+  //       console.log(errMsg); //错误提示信息
+  //       wx.showToast({
+  //         title: '网络错误',
+  //         icon: 'loading',
+  //         duration: 1500,
+  //       })
+  //     });
+  // },
 
   //聊天室初始化
   initIM: function() {
@@ -264,7 +294,7 @@ Page({
       'sdkAppID': '1400184416', //用户所属应用id,必填
       'appIDAt3rd': '1400184416', //用户所属应用id，必填
       'accountType': '36862', //用户所属应用帐号类型，必填
-      'identifier': 'ugo1', //当前用户ID,必须是否字符串类型，选填
+      'identifier': that.data.identifier, //当前用户ID,必须是否字符串类型，选填
       'identifierNick': that.data.nickName || '', //当前用户昵称，选填
       'userSig': that.data.userSig, //当前用户身份凭证，必须是字符串类型，选填
     };

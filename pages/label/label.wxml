@@ -11,7 +11,7 @@
   </view>
   <view class='lael-list-view'>
     <view class='label-list'>
-      <block wx:for="{{addList}}" wx:key="{{index}}">
+      <block wx:for="{{addList}}" wx:key="index">
         <view class='label-list-item' bindtap='onDelete' data-index='{{index}}'>{{item}} X</view>
       </block>
     </view>
@@ -24,8 +24,8 @@
   </view>
   <view class='lael-list-view'>
     <view class='label-list'>
-      <block wx:for="{{labelList}}" wx:key="{{index}}">
-        <view class='label-list-item'>{{item}}</view>
+      <block wx:for="{{labelList}}" wx:key="index">
+        <view class='label-list-item' bindtap='recommendAddToList' data-index='{{index}}'>{{item}}</view>
       </block>
     </view>
 
@@ -38,8 +38,8 @@
   </view>
   <view class='lael-list-view'>
     <view class='label-list'>
-      <block wx:for="{{historyList}}" wx:key="{{index}}">
-        <view class='label-list-item'>{{item}}</view>
+      <block wx:for="{{historyList}}" wx:key="index">
+        <view class='label-list-item' bindtap='historyAddToList' data-index='{{index}}'>{{item}}</view>
       </block>
     </view>
 

@@ -29,11 +29,11 @@ Page({
         // const images = this.data.images.concat(res.tempFilePaths)
         let src = res.tempFilePaths;
         this.setData({
-          src: src
+          src: res.tempFilePaths[0]
         })
 
         // 限制最多只能留下3张照片
-        console.log(res.tempFilePaths);
+        console.log(res.tempFilePaths[0]);
 
       }
     })
@@ -50,8 +50,6 @@ Page({
   },
   onShow() {
     let that = this;
-
-    console.log(that.data.tags, '..............');
   },
   //直播
   toLive: function() {
@@ -61,13 +59,23 @@ Page({
     let goodId = that.data.goodId;
     let tags = that.data.tags;
     let title = that.data.title;
-    let userId = wx.getStorageSync(userId);
-
+    let userId = wx.getStorageSync('userId');
+    let avatar = wx.getStorageSync('avatar')
+    let nikeName = wx.getStorageSync('nikeName');
     console.log(tags);
 
     let url = "zhiBo/room"
     var params = {
-      tags: tags
+      avatar: avatar, //头像
+      coverUrl: src,
+      goodsIds: '',
+      location: district,
+      nikeName: nikeName,
+      title: title,
+      playUrl: "string",
+      pushUrl: "string",
+      userId: userId,
+      tags: tags,
     }
     let method = "POST";
     wx.showLoading({
@@ -75,10 +83,15 @@ Page({
       }),
       network.POST(url, params, method).then((res) => {
         wx.hideLoading();
-        let userSig = that.data.userSig
-       wx.navigateTo({
-         url: '../liveStreaming/liveStreaming?userSig=' + userSig,
-       })
+        let userSig = that.data.userSig;
+        let pushUrl = res.data.data.pushUrl;
+        let playUrl = res.data.data.playUrl;
+        wx.setStorageSync('pushUrl', pushUrl);
+        wx.setStorageSync('playUrl', playUrl);
+        console.log('playUrl is:...', playUrl);
+        wx.navigateTo({
+          url: '../liveStreaming/liveStreaming?userSig=' + userSig ,
+        })
 
       }).catch((errMsg) => {
         wx.hideLoading();
@@ -129,8 +142,8 @@ Page({
   //获取userSig
   getUserSig: function() {
     let that = this;
-    let userId = wx.getStorageSync(userId);
-    let url = "common/im/userSig?userId=1"
+    let userId = wx.getStorageSync('userId');
+    let url = "common/im/userSig?userId=" + userId
     var params = {}
     let method = "GET";
     wx.showLoading({
@@ -139,8 +152,8 @@ Page({
       network.POST(url, params, method).then((res) => {
         wx.hideLoading();
         if (res.data.code == 200) {
-          let userSig = res.data.urlSig;
-          console.log(userSig)
+          let userSig = res.data.data.urlSig;
+          console.log('userSig is:', userSig)
           that.setData({
             userSig: userSig
           })
@@ -155,6 +168,12 @@ Page({
           duration: 1500,
         })
       });
+  },
+  //到商品列表页面
+  toCommodity: function() {
+    wx.navigateTo({
+      url: '../commodity/commodity',
+    })
   }
 
 })

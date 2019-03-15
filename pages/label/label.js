@@ -59,22 +59,28 @@ Page({
   getLabel: function(e) {
     let that = this;
     let labelText = e.detail.value;
-    console.log(labelText);
-    that.setData({
-      labelText: labelText
-    })
+    if (labelText != '') {
+      console.log(labelText);
+      that.setData({
+        labelText: labelText
+      })
+    }
   },
   //添加标签
   addLabel: function() {
     let that = this;
     let addList = that.data.addList;
     let labelText = that.data.labelText;
-    addList.push(labelText);
+    if (labelText != null && labelText!='') {
 
-    that.setData({
-      addList: addList,
-      labelText: ''
-    })
+      addList.push(labelText);
+      that.setData({
+        addList: addList,
+        labelText: ''
+      })
+    }
+
+
 
 
 
@@ -172,7 +178,34 @@ Page({
           duration: 1500,
         })
       });
+  },
+  //从历史添加标签
+  historyAddToList: function(event) {
+    let index = event.currentTarget.dataset.index;
+    console.log('index is :', index);
+    let that = this;
+    let tag = that.data.historyList[index];
+    console.log(tag);
+    let addList = that.data.addList;
+    addList.push(tag);
 
+    that.setData({
+      addList: addList
+    })
+  },
 
+  //从推荐添加标签
+  recommendAddToList: function(event) {
+    let index = event.currentTarget.dataset.index;
+    console.log('index is :', index);
+    let that = this;
+    let tag = that.data.labelList[index];
+    console.log(tag);
+    let addList = that.data.addList;
+    addList.push(tag);
+
+    that.setData({
+      addList: addList
+    })
   }
 })

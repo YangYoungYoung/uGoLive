@@ -149,7 +149,17 @@ Page({
         wx.hideLoading();
         if (res.data.code == 200) {
           common.showTip('登录成功');
-          wx.setStorageSync('phone', phone)
+          wx.setStorageSync('phone', phone);
+          let userId = res.data.data.user.userId;
+          let avatar = res.data.data.user.avatar;
+          console.log('userId :',res.data.data.user.userId);
+          wx.setStorageSync('userId', userId);
+          wx.setStorageSync('avatar', avatar);
+          wx.redirectTo({
+            url: '../index/index',
+          })
+        }else{
+          common.showTip(res.data.msg,'loading')
         }
 
       }).catch((errMsg) => {

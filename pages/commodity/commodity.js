@@ -15,8 +15,9 @@ Page({
    */
   onLoad: function(options) {
     let that = this;
+    let userId = wx.getStorageSync('userId');
 
-    let url = "goods/list?userId=1"
+    let url = "goods/list?userId=" + userId
     var params = {
 
     }

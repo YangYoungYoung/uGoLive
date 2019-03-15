@@ -1,37 +1,42 @@
 <!--pages/liveStreaming/liveStreaming.wxml-->
 <view class="page-body">
 
-  <live-player id="player" src="{{pushUrl}}" mode="RTC" autoplay bindstatechange="statechange" binderror="error" style="width: 100%;height:{{windowHeight}}rpx" />
+  <!-- <live-player id="player" src="{{playUrl}}" mode="RTC" autoplay bindstatechange="statechange" binderror="error" style="width: 100%;height:{{windowHeight}}rpx"> -->
 
-  <view class='top'>
-    <view class='top-left'>
-      <image class='head-image' src=''></image>
-      <view class='top-content'>
-        <view class='content-title'>
-          <text class=''>张三数码</text>
-          <view class='title-view'></view>
-          <text class=''>{{location}}</text>
-        </view>
-        <text class='content-number'>2000人观看</text>
-      </view>
+  <live-pusher id="pusher" url="{{pushUrl}}" mode="RTC" autopush bindstatechange="statechange" style="width: 100%;height:{{windowHeight}}rpx">
+    <cover-view class='top'>
+      <cover-view class='top-left'>
+        <cover-image class='head-image' src='{{avatar}}'></cover-image>
+        <cover-view class='top-content'>
+          <cover-view class='content-title'>
+            <cover-view class=''>{{nickName}}</cover-view>
+            <cover-view class='title-view'></cover-view>
+            <cover-view class=''>{{location}}</cover-view>
+          </cover-view>
+          <cover-view class='content-number'>2000人观看</cover-view>
+        </cover-view>
+      </cover-view>
+      <cover-image class='close-icon' src='../images/close_icon.png' bindtap='onClose'></cover-image>
+
+    </cover-view>
+
+    <view class='bottome'>
+      <input class='bottome-view' value="{{msgContent}}" bindconfirm="bindConfirm"></input>
     </view>
-    <image class='close-icon' src='../images/close_icon.png' bindtap='onClose'></image>
-
-  </view>
-
-
-  <view class='bottome'>
-    <input class='bottome-view' value="{{msgContent}}" bindconfirm="bindConfirm"></input>
-  </view>
-  <view class='zb-content'>
-    <!-- <view class='zb-content-title'>
+    <cover-view class='zb-content'>
+      <!-- <view class='zb-content-title'>
 
       你爹来了</view> -->
-    <view class="msgs-wrapper">
-      <view class="msgs" wx:for="{{msgs}}" wx:key="index">
-        <text class="msg-item"><text class="nickname">{{item.fromAccountNick}}</text> : {{item.content}}</text>
-      </view>
-    </view>
-  </view>
+      <cover-view class="msgs-wrapper">
+        <cover-view class="msgs" wx:for="{{msgs}}" wx:key="index">
+          <cover-view class="msg-item">
+            <cover-view class="nickname">{{item.fromAccountNick}}</cover-view>
+            <cover-view>: {{item.content}}</cover-view>
+          </cover-view>
+        </cover-view>
+      </cover-view>
+    </cover-view>
+    <!-- </live-player> -->
 
+  </live-pusher>
 </view>

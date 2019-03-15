@@ -1,11 +1,12 @@
 {
   "pages": [
-    "pages/liveStreaming/liveStreaming",
-    "pages/index/index",
+    "pages/label/label",
     "pages/login/login",
+    "pages/index/index",
+    "pages/liveStreaming/liveStreaming",
     "pages/commodity/commodity",
-    "pages/search/search",
-    "pages/label/label"
+    "pages/search/search"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

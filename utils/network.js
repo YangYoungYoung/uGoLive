@@ -7,11 +7,6 @@ var API_URL = 'http://132.232.142.23:8088/api/';
 var defaulContentType = 'application/x-www-form-urlencoded; charset=UTF-8';
 
 function POST(url, params, method, contenTTypeCust) {
-  // console.log('dev - url',url) ;
-  // console.log('dev - param',params) ; 
-  // console.log('dev - method',method) ; 
-  // console.log('dev - contenTTypeCust',contenTTypeCust) ;
-
   var contentType = defaulContentType;
   if (typeof contenTTypeCust != 'undefined') {
     contentType == contenTTypeCust;
