@@ -12,13 +12,13 @@ Page({
     windowHeight: 1334,
     showModalStatus: false,
     pushUrl: '',
-    playUrl:'',
+    playUrl: '',
     avChatRoomId: '20190201',
     identifier: '', // 当前用户身份标识，必选
     userSig: '', // 当前用户签名，必选
     nickName: '', // 当前用户昵称，选填
-    msgContent:'',
-    avatar:''
+    msgContent: '',
+    avatar: ''
   },
 
   /**
@@ -42,7 +42,7 @@ Page({
     //获取播流
     let playUrl = wx.getStorageSync('playUrl');
     console.log("playUrl is:=====", playUrl);
-    
+
     //获取identifier
     let identifier = 'ugo' + wx.getStorageSync('userId');
     //获取userSig
@@ -59,9 +59,9 @@ Page({
       nickName: nickName,
       avatar: avatar
     })
-    
+
     console.log("identifier is:", identifier);
-    
+
 
 
     //获取用户信息
@@ -91,7 +91,15 @@ Page({
   },
 
   onReady(res) {
-    this.ctx = wx.createLivePlayerContext('player')
+    this.ctx = wx.createLivePusherContext('pusher');
+    this.ctx.start({
+      success: res => {
+        console.log('start success')
+      },
+      fail: res => {
+        console.log('start fail')
+      }
+    })
   },
   statechange(e) {
     console.log('live-player code:', e.detail.code)
@@ -99,56 +107,7 @@ Page({
   error(e) {
     console.error('live-player error:', e.detail.errMsg)
   },
-  bindPlay() {
-    this.ctx.play({
-      success: res => {
-        console.log('play success')
-      },
-      fail: res => {
-        console.log('play fail')
-      }
-    })
-  },
-  bindPause() {
-    this.ctx.pause({
-      success: res => {
-        console.log('pause success')
-      },
-      fail: res => {
-        console.log('pause fail')
-      }
-    })
-  },
-  bindStop() {
-    this.ctx.stop({
-      success: res => {
-        console.log('stop success')
-      },
-      fail: res => {
-        console.log('stop fail')
-      }
-    })
-  },
-  bindResume() {
-    this.ctx.resume({
-      success: res => {
-        console.log('resume success')
-      },
-      fail: res => {
-        console.log('resume fail')
-      }
-    })
-  },
-  bindMute() {
-    this.ctx.mute({
-      success: res => {
-        console.log('mute success')
-      },
-      fail: res => {
-        console.log('mute fail')
-      }
-    })
-  },
+
   shouModel: function() {
     let that = this;
     that.setData({
@@ -357,12 +316,12 @@ Page({
       that.clearInput();
     })
   },
-  clearInput: function () {
+  clearInput: function() {
     this.setData({
       msgContent: ""
     })
   },
-  receiveMsgs: function (data) {
+  receiveMsgs: function(data) {
     console.log('receiveMsgs', data);
     var msgs = this.data.msgs || [];
     msgs.push(data);

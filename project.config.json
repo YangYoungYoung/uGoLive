@@ -14,7 +14,7 @@
 		"uglifyFileName": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.5.2",
+	"libVersion": "2.6.2",
 	"appid": "wx4c95706d5bc08f2e",
 	"projectname": "Live",
 	"debugOptions": {

@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/label/label",
     "pages/login/login",
+    "pages/label/label",
     "pages/index/index",
     "pages/liveStreaming/liveStreaming",
     "pages/commodity/commodity",

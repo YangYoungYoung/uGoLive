@@ -3,7 +3,7 @@
 
   <!-- <live-player id="player" src="{{playUrl}}" mode="RTC" autoplay bindstatechange="statechange" binderror="error" style="width: 100%;height:{{windowHeight}}rpx"> -->
 
-  <live-pusher id="pusher" url="{{pushUrl}}" mode="RTC" autopush bindstatechange="statechange" style="width: 100%;height:{{windowHeight}}rpx">
+  <live-pusher id="pusher" url="{{pushUrl}}" mode="RTC" autopush='true' bindstatechange="statechange" style="width: 100%;height:{{windowHeight}}rpx" >
     <cover-view class='top'>
       <cover-view class='top-left'>
         <cover-image class='head-image' src='{{avatar}}'></cover-image>
