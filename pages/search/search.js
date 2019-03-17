@@ -11,56 +11,60 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
 
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
+  onSearch: function() {
+    let that = this;
+    let userId = wx.getStorageSync('userId');
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
+    let url = "goods/list?userId=" + userId
+    var params = {
 
-  },
+    }
+    let method = "GET";
+    wx.showLoading({
+        title: '加载中...',
+      }),
+      network.POST(url, params, method).then((res) => {
+        wx.hideLoading();
+        if (res.data.code == 200) {
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
+          console.log(res.data.data.goodsS);
+          let shopList = res.data.data.goodsS
+          if (shopList.length != 0) {
+            that.setData({
+              shopList: shopList
+            })
+          } else {
+            common.showTip("暂无数据", 'loading');
+          }
 
-  },
+        } else {
+          wx.showToast({
+            title: '网络错误',
+            icon: 'loading',
+            duration: 1500,
+          })
+        }
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+      }).catch((errMsg) => {
+        wx.hideLoading();
+        console.log(errMsg); //错误提示信息
+        wx.showToast({
+          title: '网络错误',
+          icon: 'loading',
+          duration: 1500,
+        })
+      });
   }
+
 })
