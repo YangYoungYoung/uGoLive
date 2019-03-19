@@ -1,7 +1,7 @@
 <!--pages/commodity/commodity.wxml-->
 <view class='container'>
   <view class='title'>
-    <view class='title-view'>
+    <view class='title-view' bindtap='toSearch'>
       <text class='search-text'>请输入商品名称</text>
       <image class='search-icon' src='../images/search-icon.png'></image>
     </view>
@@ -9,19 +9,24 @@
 
   <view class='commodity-list'>
     <block wx:for="{{shopList}}" wx:key='index'>
-      <view class='commodity-item'>
+      <view class='commodity-item' bindtap='onSelect' data-index='{{index}}'>
         <image class='commodity-icon'></image>
         <view class='commodity-content'>
           <text class='commodity-name'>fasdfsdafasdf</text>
           <text class='commodity-price'>￥19400</text>
         </view>
-        <button class='commodity-btn'>选择</button>
+        <block wx:if="{{item.select}}">
+          <button class='commodity-btn'>选择</button>
+        </block>
+        <block wx:else>
+          <button class='cancel-btn'>取消</button>
+        </block>
       </view>
       <view class='line'></view>
     </block>
   </view>
 
-  <view class='footer'>
+  <view class='footer' bindtap='submit'>
     提交
   </view>
 

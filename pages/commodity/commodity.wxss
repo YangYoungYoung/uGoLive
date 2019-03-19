@@ -96,14 +96,25 @@
   background: rgba(193, 193, 193, 1);
   margin-top: 24rpx;
 }
-.footer{
+
+.footer {
   width: 100%;
   height: 88rpx;
-  background-color: #E83D2C;
-  color: #FFFFFF;
+  background-color: #e83d2c;
+  color: #fff;
   text-align: center;
   line-height: 88rpx;
   position: fixed;
   bottom: 0;
-    
+}
+
+.cancel-btn {
+ width: 108rpx;
+  height: 49rpx;
+  border-radius: 8rpx;
+  line-height: 49rpx;
+  font-size: 24rpx;
+  color: #fbfbfb;
+  text-align: center;
+  background: #919191;
 }

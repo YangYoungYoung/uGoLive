@@ -1,11 +1,13 @@
 {
   "pages": [
+    "pages/commodity/commodity",
+    "pages/search/search",
     "pages/login/login",
     "pages/label/label",
     "pages/index/index",
-    "pages/liveStreaming/liveStreaming",
-    "pages/commodity/commodity",
-    "pages/search/search"
+    "pages/liveStreaming/liveStreaming"
+    
+    
     
   ],
   "window": {

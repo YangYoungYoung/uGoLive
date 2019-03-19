@@ -1,7 +1,10 @@
 <!--pages/search/search.wxml-->
 <view class='container'>
   <view class='title'>
-   <van-search value="{{ value }}" placeholder="请输入关键词搜索" bind:change="onSearch" />
+    <!-- <van-search value="{{value}}" placeholder="请输入关键词搜索" bind:change="onSearch" bind:cancel="onCancel"/> -->
+    <van-search value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot bind:change="onChange">
+      <view slot="action" bind:tap="onSearch">搜索</view>
+    </van-search>
   </view>
 
   <view class='commodity-list'>
